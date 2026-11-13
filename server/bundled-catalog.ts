@@ -16,6 +16,8 @@ const manifestSchema=z.object({
     cover:z.object({sha256:sha,file:z.string(),bytes:z.number().int().positive(),width:z.number().int().positive(),height:z.number().int().positive(),sourceKind:z.enum(['repository','external']),sourcePageUrl:z.string(),sourceImageUrl:z.string(),license:z.string(),licenseUrl:z.string(),matchReason:z.string()}).nullable()}))
 })
 const sha256=(bytes:Uint8Array|string)=>createHash('sha256').update(bytes).digest('hex')
+const normalizeText=(bytes:Uint8Array)=>Buffer.from(bytes).toString('utf8').replace(/\r\n/g,'\n')
+const sha256Text=(bytes:Uint8Array)=>sha256(normalizeText(bytes))
 const defaultRoot=fileURLToPath(new URL('../',import.meta.url))
 const builtinArt=new Set(['tomato','beef','shrimp','soup','greens','tofu'])
 const coverDecisionSchema=z.discriminatedUnion('action',[
@@ -40,7 +42,7 @@ function readWithin(root:string,path:string){
 export function readBundledCatalog(root=defaultRoot):BundledCatalog {
   const folder=resolve(root,'content/howtocook'),raw=readWithin(folder,'manifest.json'),manifest=manifestSchema.parse(JSON.parse(raw.toString('utf8')))
   const bundle=z.object({manifestSha256:sha,licenseSha256:sha,archiveSha256:sha,recipeCount:z.number().int(),uniqueImages:z.number().int()}).parse(JSON.parse(readWithin(folder,'bundle.json').toString('utf8')))
-  if(sha256(raw)!==bundle.manifestSha256||sha256(readWithin(folder,manifest.source.licenseFile))!==bundle.licenseSha256)throw new Error('内置菜谱清单或许可证校验失败')
+  if(sha256Text(raw)!==bundle.manifestSha256||sha256Text(readWithin(folder,manifest.source.licenseFile))!==bundle.licenseSha256)throw new Error('内置菜谱清单或许可证校验失败')
   const reviewBytes=readWithin(folder,'cover-review.json')
   const review=z.object({archiveSha256:sha,items:z.record(z.string(),z.object({status:z.enum(['reject','needs_review']),reason:z.string()}))}).parse(JSON.parse(reviewBytes.toString('utf8')))
   if(review.archiveSha256!==bundle.archiveSha256)throw new Error('封面复核记录与菜谱包不一致')
@@ -55,7 +57,7 @@ export function readBundledCatalog(root=defaultRoot):BundledCatalog {
     if(ids.has(row.recipeId)||row.markdownFile!=='source/'+row.sourcePath)throw new Error('菜谱包存在重复标识或路径错误')
     ids.add(row.recipeId)
     const bytes=readWithin(folder,row.markdownFile)
-    if(sha256(bytes)!==row.markdownSha256)throw new Error('菜谱原文校验失败：'+row.recipeId)
+    if(sha256Text(bytes)!==row.markdownSha256)throw new Error('菜谱原文校验失败：'+row.recipeId)
     const recipe=parseRecipe(row.sourcePath,bytes.toString('utf8'))
     if(!recipe||recipe.id!==row.recipeId)throw new Error('菜谱无法解析：'+row.recipeId)
     const legacyArt=recipe.art
@@ -95,7 +97,7 @@ export function readBundledCatalog(root=defaultRoot):BundledCatalog {
     return recipe
   })
   if(recipes.length!==manifest.recipeCount||recipes.length!==bundle.recipeCount||images.size!==bundle.uniqueImages||manifest.recipes.filter(r=>r.cover).length!==manifest.imageCount)throw new Error('内置菜谱或图片数量不完整')
-  return {version:'howtocook-v1-'+sha256(Buffer.concat([raw,reviewBytes,correctionBytes])),recipes,managedCovers}
+  return {version:'howtocook-v1-'+sha256([raw,reviewBytes,correctionBytes].map(normalizeText).join('')),recipes,managedCovers}
 }
 
 /** Install once per bundle, preserving user content, menu choices and historical versions. */
