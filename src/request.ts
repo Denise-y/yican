@@ -9,7 +9,7 @@ let cloudReady = false
 function ensureCloud() {
   if (cloudReady) return
   cloudReady = true
-  try { wxApi?.cloud?.init?.({}) } catch { /* 云开发未初始化时由 callContainer 自身报错 */ }
+  try { wxApi?.cloud?.init?.({ env: CLOUD_ENV }) } catch { /* 云开发未初始化时由 callContainer 自身报错 */ }
 }
 
 /** 会话 Cookie：小程序端手动保存与携带（wx.request 不会自动跨启动保留）。 */
