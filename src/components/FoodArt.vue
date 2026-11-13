@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { API_BASE } from '../config'
+import { IMAGE_BASE } from '../config'
 const props = defineProps<{ kind?: string; reference?: boolean; alt?: string }>()
 const photo = computed(() => props.kind?.startsWith('/images/') || props.kind?.startsWith('http'))
-/** 小程序 <image> 不会把 /images/… 当网络地址；需拼成绝对 URL 才能从本机服务加载。 */
+/** 小程序 <image> 不会把 /images/… 当网络地址；需拼成绝对 URL（生产为对象存储域名）。 */
 const photoSrc = computed(() => {
   const kind = props.kind ?? ''
   if (kind.startsWith('http')) return kind
-  if (kind.startsWith('/images/')) return API_BASE + kind
+  if (kind.startsWith('/images/')) return IMAGE_BASE + kind
   return kind
 })
 

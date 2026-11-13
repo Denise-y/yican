@@ -7,10 +7,11 @@ import { Store } from './store'
 import { CommandError } from './commands'
 import { Accounts, stateForUser } from './auth'
 
-export function createAppServer(store:Store,dist:string,available:()=>boolean=()=>true,publicDir?:string){
+export function createAppServer(store:Store,dist:string,available:()=>boolean=()=>true,publicDir?:string,onWrite?:()=>void){
  const accounts=new Accounts(store)
  return createServer(async(req,res)=>{
   res.setHeader('X-Content-Type-Options','nosniff')
+  if(onWrite&&req.method&&!['GET','HEAD'].includes(req.method))res.on('finish',()=>{if(res.statusCode<400)onWrite()})
   const json=(status:number,value:unknown)=>{res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify(value))}
   try{
    const url=new URL(req.url||'/',`http://${req.headers.host||'localhost'}`),pathname=url.pathname
@@ -19,12 +20,14 @@ export function createAppServer(store:Store,dist:string,available:()=>boolean=()
    const user=accounts.current(req.headers.cookie)
    const readBody=async()=>{
     if(req.headers['x-yican-request']!=='1'||!req.headers['content-type']?.startsWith('application/json'))throw new CommandError('请求格式不受支持',403)
-    if(req.headers.origin&&new URL(req.headers.origin).host!==req.headers.host)throw new CommandError('不接受跨站写入',403)
+    // wx.cloud.callContainer 走微信链路，可能携带非本域 Origin；带 openid 头或 servicewechat 来源视为受信。
+    const origin=req.headers.origin?new URL(req.headers.origin).host:null
+    if(origin&&origin!==req.headers.host&&!req.headers['x-wx-openid']&&origin!=='servicewechat.com')throw new CommandError('不接受跨站写入',403)
     const chunks:Buffer[]=[];let length=0
     for await(const chunk of req){const buffer=Buffer.from(chunk);length+=buffer.length;if(length>256000)throw new CommandError('提交内容过大',413);chunks.push(buffer)}
     return JSON.parse(Buffer.concat(chunks).toString('utf8'))
    }
-   const session=(value:ReturnType<Accounts['current']>|unknown,token:string)=>{res.setHeader('Set-Cookie',accounts.cookie(token,!!(req.socket as typeof req.socket&{encrypted?:boolean}).encrypted));json(200,{user:value})}
+   const session=(value:ReturnType<Accounts['current']>|unknown,token:string)=>{res.setHeader('Set-Cookie',accounts.cookie(token,!!(req.socket as typeof req.socket&{encrypted?:boolean}).encrypted));json(200,{user:value,token})}
    if(pathname==='/api/auth/me'&&req.method==='GET'){json(200,{user,...accounts.setup()});return}
    if(pathname==='/api/auth/register'&&req.method==='POST'){const result=await accounts.register(await readBody(),req.socket.remoteAddress??'local');session(result.user,result.token);return}
    if(pathname==='/api/auth/login'&&req.method==='POST'){const result=await accounts.login(await readBody(),req.socket.remoteAddress??'local');session(result.user,result.token);return}

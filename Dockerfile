@@ -8,5 +8,6 @@ COPY content ./content
 COPY public ./public
 ENV YICAN_HOST=0.0.0.0
 ENV YICAN_DATA_DIR=/data
-EXPOSE 3000
-CMD ["sh", "-c", "YICAN_PORT=${PORT:-3000} exec npx tsx server/index.ts"]
+ENV TZ=Asia/Shanghai
+EXPOSE 80
+CMD ["sh", "-c", "YICAN_PORT=${PORT:-80} exec npx tsx server/index.ts"]

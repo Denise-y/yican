@@ -7,3 +7,11 @@
  */
 export const API_BASE: string =
   (import.meta.env.VITE_API_BASE as string | undefined) || 'http://127.0.0.1:3000'
+
+/** 封面图静态资源域名（生产指向对象存储；默认跟随 API_BASE 走本机/服务器）。 */
+export const IMAGE_BASE: string = (import.meta.env.VITE_IMAGE_BASE as string | undefined) || API_BASE
+
+/** 微信云托管：设置 VITE_CLOUD_ENV 后小程序端改走 wx.cloud.callContainer（免域名白名单）。 */
+export const CLOUD_ENV: string | undefined = import.meta.env.VITE_CLOUD_ENV as string | undefined
+export const CLOUD_SERVICE: string =
+  (import.meta.env.VITE_CLOUD_SERVICE as string | undefined) || 'yican'

@@ -1,4 +1,16 @@
-import { API_BASE } from './config'
+import { API_BASE, CLOUD_ENV, CLOUD_SERVICE } from './config'
+
+interface WxLike { cloud?: { init: (config?: unknown) => void; callContainer: (options: Record<string, unknown>) => void } }
+const wxApi = (globalThis as unknown as { wx?: WxLike }).wx
+
+/** 云托管模式：配置了 VITE_CLOUD_ENV 且当前为微信小程序时，走 callContainer（无需合法域名）。 */
+const useCloud = !!CLOUD_ENV && !!wxApi?.cloud?.callContainer
+let cloudReady = false
+function ensureCloud() {
+  if (cloudReady) return
+  cloudReady = true
+  try { wxApi?.cloud?.init?.({}) } catch { /* 云开发未初始化时由 callContainer 自身报错 */ }
+}
 
 /** 会话 Cookie：小程序端手动保存与携带（wx.request 不会自动跨启动保留）。 */
 const COOKIE_KEY = 'yican_cookie'
@@ -63,25 +75,42 @@ export async function requestJson<T = any>(
   init: { method?: string; headers?: Record<string, string>; body?: string } = {},
   timeoutMs: number
 ): Promise<JsonResponse<T>> {
-  const absolute = url.startsWith('http') ? url : API_BASE + url
   const headers: Record<string, string> = { ...(init.headers ?? {}) }
   const cookie = loadCookie()
   if (cookie) headers.Cookie = cookie
 
   let result: { statusCode: number; header: Record<string, any>; data: any }
   try {
-    result = await new Promise((resolve, reject) => {
-      uni.request({
-        url: absolute,
-        method: (init.method as any) || 'GET',
-        data: init.body ?? undefined,
-        header: headers,
-        timeout: timeoutMs,
-        responseType: 'text',
-        success: resolve,
-        fail: () => reject(new Error('network')),
+    if (useCloud) {
+      ensureCloud()
+      const path = url.startsWith('http') ? new URL(url).pathname + new URL(url).search : url
+      result = await new Promise((resolve, reject) => {
+        wxApi!.cloud!.callContainer({
+          config: { env: CLOUD_ENV, service: CLOUD_SERVICE },
+          path,
+          method: (init.method as any) || 'GET',
+          data: init.body ?? undefined,
+          header: { ...headers, 'X-WX-SERVICE': CLOUD_SERVICE },
+          timeout: Math.min(timeoutMs, 14000),
+          success: resolve,
+          fail: (error: unknown) => reject(error),
+        })
       })
-    })
+    } else {
+      const absolute = url.startsWith('http') ? url : API_BASE + url
+      result = await new Promise((resolve, reject) => {
+        uni.request({
+          url: absolute,
+          method: (init.method as any) || 'GET',
+          data: init.body ?? undefined,
+          header: headers,
+          timeout: timeoutMs,
+          responseType: 'text',
+          success: resolve,
+          fail: () => reject(new Error('network')),
+        })
+      })
+    }
   } catch {
     throw new Error('暂时连接不到厨房，请确认服务正在运行')
   }
@@ -98,6 +127,10 @@ export async function requestJson<T = any>(
     }
   }
   if (body == null) body = {}
+  // callContainer 可能不透传 set-cookie：响应体带 token 时同样落盘。
+  if (body && typeof body === 'object' && Object.prototype.hasOwnProperty.call(body, 'token')) {
+    saveCookie((body as { token?: string }).token ? `yican_session=${(body as { token?: string }).token}` : null)
+  }
   return { response: new MiniResponse(result.statusCode, responseHeaders), body: body as T }
 }
 
