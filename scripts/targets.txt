@@ -1,0 +1,651 @@
+﻿[account.css] (base)
+  SEL: .auth-page
+  BODY: {display:grid; grid-template-columns:minmax(360px,.95fr) minmax(420px,1.05fr); min-height:100dvh; padding:0; background:var(--paper)}
+[account.css] (base)
+  SEL: .auth-form-side
+  BODY: {display:flex; flex-direction:column; justify-content:center; align-items:center; padding:42px 28px 22px; min-width:0}
+[account.css] (base)
+  SEL: .auth-tabs
+  BODY: {display:grid; grid-template-columns:1fr 1fr; background:var(--tint); border-radius:12px; padding:4px; margin:25px 0 24px; gap:4px}
+[account.css] (base)
+  SEL: .auth-tabs button
+  BODY: {min-height:43px; border-radius:9px; color:var(--muted); font-size:13px}
+[account.css] (base)
+  SEL: .auth-tabs button.active
+  BODY: {background:var(--white); color:var(--orange); box-shadow:0 2px 7px #30241908; font-weight:600}
+[account.css] (base)
+  SEL: .auth-roles
+  BODY: {display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-bottom:21px}
+[account.css] (base)
+  SEL: .auth-roles button
+  BODY: {border:1px solid var(--line); background:var(--white); min-height:94px; border-radius:13px; display:flex; flex-direction:column; align-items:flex-start; padding:13px; color:var(--muted); gap:7px; text-align:left}
+[account.css] (base)
+  SEL: .auth-roles button.selected
+  BODY: {background:var(--soft-orange); border-color:var(--orange); color:var(--orange)}
+[account.css] (base)
+  SEL: .auth-roles b
+  BODY: {font-size:13px; font-weight:500}
+[account.css] (base)
+  SEL: .auth-roles small
+  BODY: {font-size:10px; color:var(--muted)}
+[account.css] (base)
+  SEL: .account-bar
+  BODY: {min-height:49px; padding-top:5px; padding-bottom:5px}
+[account.css] @media(max-width:800px)
+  SEL: .auth-page
+  BODY: {grid-template-columns:1fr; min-height:100dvh}
+[account.css] @media(max-width:800px)
+  SEL: .auth-form-side
+  BODY: {padding:27px 23px 24px; justify-content:flex-start}
+[account.css] @media(max-width:800px)
+  SEL: .auth-tabs
+  BODY: {margin:23px 0 23px}
+[account.css] @media(max-width:800px)
+  SEL: .auth-roles button
+  BODY: {min-height:98px}
+[account.css] @media(max-width:800px)
+  SEL: .account-bar
+  BODY: {padding-left:12px; padding-right:12px}
+[account.css] @media(max-width:800px)
+  SEL: .account-bar .demo-label
+  BODY: {font-size:10px; gap:6px}
+[account.css] @media(max-width:360px)
+  SEL: .auth-form-side
+  BODY: {padding-left:18px; padding-right:18px}
+[components\FeedbackGateway.vue <style>] (base)
+  SEL: .feedback-gateway-actions
+  BODY: {display:grid;gap:10px;width:100%}
+[components\FeedbackGateway.vue <style>] (base)
+  SEL: .feedback-gateway-actions .btn
+  BODY: {min-height:46px;text-decoration:none}
+[components\KitchenManagement.vue <style>] (base)
+  SEL: .management-actions
+  BODY: {display:grid;grid-template-columns:1fr 1fr;gap:12px}
+[components\KitchenNameEditor.vue <style>] (base)
+  SEL: .kitchen-name-actions
+  BODY: {display:grid;grid-template-columns:1fr 2fr;gap:12px}
+[components\KitchenNameEditor.vue <style>] (base)
+  SEL: .kitchen-name-actions .btn
+  BODY: {min-height:48px}
+[components\RecipeEditor.vue <style>] (base)
+  SEL: .editor-covers
+  BODY: {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+[components\RecipeEditor.vue <style>] (base)
+  SEL: .editor-covers button
+  BODY: {position:relative;border:1px solid var(--line);border-radius:14px;padding:0 0 10px;overflow:hidden;background:var(--paper);color:var(--muted);min-width:0}
+[components\RecipeEditor.vue <style>] (base)
+  SEL: .editor-covers button.selected
+  BODY: {border:2px solid var(--orange);color:var(--orange)}
+[components\RecipeEditor.vue <style>] (base)
+  SEL: .editor-covers .food-art
+  BODY: {display:block;width:100%;height:85px}
+[components\RecipeEditor.vue <style>] (base)
+  SEL: .editor-covers span
+  BODY: {font-size:12px}
+[components\RecipeEditor.vue <style>] (base)
+  SEL: .ingredient-amounts
+  BODY: {display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:10px}
+[components\RecipeEditor.vue <style>] (base)
+  SEL: .ingredient-amounts .form-field
+  BODY: {min-width:0;margin-bottom:0}
+[components\RecipeEditor.vue <style>] @media(max-width:400px)
+  SEL: .ingredient-amounts
+  BODY: {gap:6px}
+[components\RecipeEditor.vue <style>] @media(max-width:400px)
+  SEL: .ingredient-amounts input,.ingredient-amounts select
+  BODY: {padding-left:9px;padding-right:9px}
+[components\StockTextEntry.vue <style>] (base)
+  SEL: .stock-text-row-fields
+  BODY: {display:grid;grid-template-columns:1fr .9fr 1fr;gap:9px;margin-top:8px}
+[components\StockTextEntry.vue <style>] (base)
+  SEL: .stock-text-row-fields label
+  BODY: {min-width:0;font-size:11px;color:var(--muted);display:grid;gap:6px}
+[components\StockTextEntry.vue <style>] (base)
+  SEL: .stock-text-actions
+  BODY: {display:grid;grid-template-columns:1fr 2fr;gap:12px}
+[components\StockTextEntry.vue <style>] (base)
+  SEL: .stock-text-actions .btn
+  BODY: {min-height:48px}
+[components\StockTextEntry.vue <style>] @media(max-width:360px)
+  SEL: .stock-text-row-fields
+  BODY: {gap:6px}
+[journal.css] (base)
+  SEL: .journal-layout
+  BODY: {display:grid; grid-template-columns:minmax(320px,.9fr) minmax(0,1.2fr); gap:28px; align-items:start}
+[journal.css] (base)
+  SEL: .journal-calendar
+  BODY: {border:1px solid var(--line); border-radius:21px; padding:22px; position:sticky; top:20px}
+[journal.css] (base)
+  SEL: .journal-stats
+  BODY: {display:grid; grid-template-columns:repeat(3,1fr); padding:15px 0 17px; margin-bottom:13px; border-bottom:1px solid var(--line)}
+[journal.css] (base)
+  SEL: .journal-stats span
+  BODY: {text-align:center; font-size:10px; color:var(--muted)}
+[journal.css] (base)
+  SEL: .journal-stats span+span
+  BODY: {border-left:1px solid var(--line)}
+[journal.css] (base)
+  SEL: .journal-stats b
+  BODY: {color:var(--orange); font-family:Georgia,serif; font-size:25px; font-weight:400; margin-right:4px}
+[journal.css] (base)
+  SEL: .journal-days
+  BODY: {display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px 3px}
+[journal.css] (base)
+  SEL: .journal-days button
+  BODY: {min-height:48px; padding:6px 0; border-radius:13px; border:1px solid transparent; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:5px; color:var(--ink); font-size:15px; font-variant-numeric:tabular-nums}
+[journal.css] (base)
+  SEL: .journal-days button.recorded
+  BODY: {background:var(--soft-orange); font-weight:600; color:var(--orange)}
+[journal.css] (base)
+  SEL: .journal-days button.today
+  BODY: {border-color:var(--orange)}
+[journal.css] (base)
+  SEL: .journal-days button.future
+  BODY: {color:var(--muted)}
+[journal.css] (base)
+  SEL: .journal-days button:hover
+  BODY: {background:var(--soft-orange)}
+[journal.css] (base)
+  SEL: .journal-days button.selected
+  BODY: {background:var(--orange); color:white; border-color:var(--orange)}
+[journal.css] (base)
+  SEL: .journal-days button.selected i
+  BODY: {border-color:white}
+[journal.css] (base)
+  SEL: .journal-days button.selected .confirmed
+  BODY: {background:white}
+[journal.css] (base)
+  SEL: .journal-day-detail
+  BODY: {min-width:0}
+[journal.css] @media(max-width:1000px)
+  SEL: .journal-layout
+  BODY: {grid-template-columns:1fr; gap:26px; max-width:620px; margin:auto}
+[journal.css] @media(max-width:1000px)
+  SEL: .journal-calendar
+  BODY: {position:static}
+[journal.css] @media(max-width:680px)
+  SEL: .journal-calendar
+  BODY: {padding:16px; border-radius:18px}
+[journal.css] @media(max-width:680px)
+  SEL: .journal-stats
+  BODY: {padding:12px 0 14px; margin-bottom:9px}
+[journal.css] @media(max-width:680px)
+  SEL: .journal-stats b
+  BODY: {font-size:24px}
+[journal.css] @media(max-width:680px)
+  SEL: .journal-days button
+  BODY: {min-height:46px; font-size:14px; border-radius:11px}
+[journal.css] @media(max-width:360px)
+  SEL: .journal-calendar
+  BODY: {padding:12px}
+[journal.css] @media(max-width:360px)
+  SEL: .journal-stats span
+  BODY: {font-size:9px}
+[MainView.vue <style>] (base)
+  SEL: .stock-entry-actions
+  BODY: {display:flex;gap:10px;flex-wrap:wrap}
+[MainView.vue <style>] (base)
+  SEL: .stock-entry-actions .btn
+  BODY: {min-height:46px}
+[MainView.vue <style>] @media(max-width:600px)
+  SEL: .stock-entry-actions
+  BODY: {width:100%;display:grid;grid-template-columns:1fr 1fr}
+[MainView.vue <style>] @media(max-width:600px)
+  SEL: .stock-entry-actions .btn
+  BODY: {justify-content:center}
+[mobile-warm.css] (base)
+  SEL: .demo-bar
+  BODY: {background:#efe5d8;color:#61564d}
+[mobile-warm.css] (base)
+  SEL: .brand strong,.breadcrumbs>span,.hero h1,.section-heading h2,.page-heading h1,.dish-title,.cart-heading h3,.panel-head h2,.modal-head h2,.stock-card h3,.settings-card h2,.prep-card h2,.welcome-empty h1
+  BODY: {color:var(--ink)}
+[mobile-warm.css] (base)
+  SEL: .dish-card,.cart,.surface,.stock-card,.shopping-list
+  BODY: {border-color:var(--line);background:var(--white)}
+[mobile-warm.css] (base)
+  SEL: .prep-icon,.summary-icon
+  BODY: {background:#ffdfbe;color:#a44411}
+[mobile-warm.css] (base)
+  SEL: .prep-stats b,.ingredient-name>b,.ingredient-amount>b,.setting-row b,.recipe-modal h3,.steps-heading
+  BODY: {color:#41372f}
+[mobile-warm.css] (base)
+  SEL: .ingredient-name>span,.ingredient-amount>span,.setting-row>span:first-child,.member-list b,.member-list>div>span:last-child
+  BODY: {color:#75695e}
+[mobile-warm.css] (base)
+  SEL: .prepared .ingredient-name>b
+  BODY: {color:#65765b}
+[mobile-warm.css] (base)
+  SEL: .invitation-card,.invite-type>button.selected
+  BODY: {background:#fff0df;border-color:#e9c49e;color:#9b4d19}
+[mobile-warm.css] (base)
+  SEL: .calendar-week,.calendar-grid
+  BODY: {display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+[mobile-warm.css] (base)
+  SEL: .calendar-week
+  BODY: {margin-bottom:8px;text-align:center;color:#8b7867;font-size:12px}
+[mobile-warm.css] (base)
+  SEL: .calendar-week span
+  BODY: {padding:7px 0}
+[mobile-warm.css] (base)
+  SEL: .calendar-grid button
+  BODY: {position:relative;min-height:48px;border-radius:12px;font-size:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:1px solid transparent;color:#42362c}
+[mobile-warm.css] (base)
+  SEL: .calendar-grid button.today
+  BODY: {border-color:#e4c6a5}
+[mobile-warm.css] (base)
+  SEL: .calendar-grid button.selected,.calendar-grid button.selected:hover
+  BODY: {background:#d65b16;color:white;border-color:#d65b16}
+[mobile-warm.css] (base)
+  SEL: .calendar-grid button:disabled
+  BODY: {opacity:1;color:#bcb3aa;background:#f8f3ed;cursor:default}
+[mobile-warm.css] (base)
+  SEL: .calendar-grid .selected .mine
+  BODY: {background:white}
+[mobile-warm.css] (base)
+  SEL: .calendar-grid .selected .others
+  BODY: {background:#e4cdff}
+[mobile-warm.css] (base)
+  SEL: .menu-browser
+  BODY: {display:grid;grid-template-columns:112px minmax(0,1fr);gap:20px;align-items:start}
+[mobile-warm.css] (base)
+  SEL: .menu-results
+  BODY: {min-width:0}
+[mobile-warm.css] (base)
+  SEL: .category-rail
+  BODY: {display:flex;flex-direction:column;gap:5px;position:sticky;top:16px;max-height:70vh;overflow-y:auto;background:#f3eadd;border-radius:13px;padding:7px;scrollbar-width:thin;overscroll-behavior:contain}
+[mobile-warm.css] (base)
+  SEL: .category-rail button
+  BODY: {position:relative;display:flex;align-items:center;justify-content:flex-start;gap:5px;min-height:52px;text-align:left;padding:10px 8px;border-radius:9px;color:#786553;font-size:12px;flex-shrink:0}
+[mobile-warm.css] (base)
+  SEL: .category-rail button>span
+  BODY: {flex:1}
+[mobile-warm.css] (base)
+  SEL: .category-rail button small
+  BODY: {font-size:10px;color:#907f6e}
+[mobile-warm.css] (base)
+  SEL: .category-rail button .yican-icon
+  BODY: {flex-shrink:0}
+[mobile-warm.css] (base)
+  SEL: .category-rail button.active
+  BODY: {background:#fffaf3;color:#a8430b;font-weight:600;box-shadow:0 2px 7px #7e4b1510}
+[mobile-warm.css] (base)
+  SEL: .category-rail button.active::before
+  BODY: {content:'';position:absolute;left:-7px;width:3px;height:23px;background:var(--orange);border-radius:0 3px 3px 0}
+[mobile-warm.css] @media(min-width:681px)
+  SEL: .menu-layout
+  BODY: {grid-template-columns:minmax(0,1fr)}
+[mobile-warm.css] @media(min-width:681px)
+  SEL: .dish-grid,.no-cart .dish-grid
+  BODY: {grid-template-columns:repeat(2,minmax(0,1fr))}
+[mobile-warm.css] @media(min-width:1450px)
+  SEL: .menu-layout
+  BODY: {grid-template-columns:minmax(0,1fr) 285px}
+[mobile-warm.css] @media(min-width:1450px)
+  SEL: .dish-grid,.no-cart .dish-grid
+  BODY: {grid-template-columns:repeat(2,minmax(0,1fr))}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .menu-browser
+  BODY: {grid-template-columns:78px minmax(0,1fr);gap:10px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail
+  BODY: {border-radius:11px;padding:5px;gap:4px;top:10px;max-height:calc(100dvh - 190px)}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail button
+  BODY: {flex-wrap:wrap;justify-content:center;text-align:center;padding:10px 3px;min-height:62px;font-size:12px;gap:4px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail button>span
+  BODY: {flex:none;width:100%;line-height:1.5}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail button small
+  BODY: {display:none}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail button.active::before
+  BODY: {left:-5px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail button .yican-icon
+  BODY: {width:15px;height:15px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .dish-grid,.no-cart .dish-grid
+  BODY: {grid-template-columns:minmax(0,1fr);gap:12px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .dish-card
+  BODY: {border-radius:13px;overflow:hidden}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .calendar-week
+  BODY: {gap:2px;margin-bottom:4px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .calendar-grid
+  BODY: {gap:2px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .calendar-grid button
+  BODY: {min-height:46px;border-radius:11px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .check-wrap
+  BODY: {min-height:44px;align-items:center}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .check-wrap input
+  BODY: {width:32px;height:44px}
+[mobile-warm.css] (base)
+  SEL: .menu-layout
+  BODY: {grid-template-columns:minmax(0,1fr)}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .menu-browser
+  BODY: {grid-template-columns:62px minmax(0,1fr);gap:8px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail
+  BODY: {padding:4px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail button
+  BODY: {padding:9px 1px;font-size:11px;min-height:58px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .category-rail button.active::before
+  BODY: {left:-4px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .dish-grid,.no-cart .dish-grid
+  BODY: {grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .dish-card
+  BODY: {min-width:0;border-radius:11px;display:flex;flex-direction:column}
+[mobile-warm.css] (base)
+  SEL: .mobile-recipe-nav
+  BODY: {display:none}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .mobile-recipe-nav
+  BODY: {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 20px}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .mobile-recipe-nav>button
+  BODY: {display:flex;align-items:center;gap:10px;min-width:0;min-height:72px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--white);color:var(--ink);text-align:left}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .mobile-recipe-nav>button.active
+  BODY: {border-color:var(--orange);background:var(--soft-orange)}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .mobile-recipe-nav b
+  BODY: {display:block;font-size:13px;font-weight:600;line-height:1.6}
+[mobile-warm.css] @media(max-width:680px)
+  SEL: .mobile-recipe-nav small
+  BODY: {display:block;margin-top:3px;font-size:10px;line-height:1.6;color:var(--muted)}
+[reviews.css] (base)
+  SEL: .review-targets
+  BODY: {display:grid;grid-template-columns:130px minmax(0,1fr);gap:10px;margin-bottom:20px}
+[reviews.css] @media(max-width:680px)
+  SEL: .review-targets
+  BODY: {grid-template-columns:122px minmax(0,1fr);gap:8px}
+[style.css] (base)
+  SEL: .demo-bar
+  BODY: {background:#3b473d;color:#f3ede7;min-height:40px;padding:7px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px}
+[style.css] (base)
+  SEL: .menu-layout
+  BODY: {display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:27px;align-items:start}
+[style.css] (base)
+  SEL: .menu-layout.no-cart
+  BODY: {grid-template-columns:1fr}
+[style.css] (base)
+  SEL: .dish-grid
+  BODY: {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+[style.css] (base)
+  SEL: .no-cart .dish-grid
+  BODY: {grid-template-columns:repeat(3,minmax(0,1fr))}
+[style.css] (base)
+  SEL: .dish-card
+  BODY: {border-radius:11px;background:#fdfdfc;border:1px solid #ede5db;overflow:hidden;transition:transform .2s,box-shadow .2s}
+[style.css] (base)
+  SEL: .dish-card:hover
+  BODY: {transform:translateY(-3px);box-shadow:0 8px 22px #46413b09}
+[style.css] (base)
+  SEL: .chef-layout
+  BODY: {display:grid;grid-template-columns:minmax(0,1fr) 275px;gap:28px;align-items:start}
+[style.css] (base)
+  SEL: .prep-icon
+  BODY: {display:inline-grid;place-items:center;width:65px;height:65px;border-radius:50%;background:#e2dcd6;color:#82796e;margin-bottom:24px}
+[style.css] (base)
+  SEL: .shopping-row
+  BODY: {padding:21px 0;border-bottom:1px solid #eee6dd;display:flex;align-items:center;gap:17px}
+[style.css] (base)
+  SEL: .shopping-row:last-child
+  BODY: {border-bottom:0}
+[style.css] (base)
+  SEL: .check-wrap
+  BODY: {position:relative;display:flex;cursor:pointer;padding:4px;flex-shrink:0}
+[style.css] (base)
+  SEL: .check-wrap input
+  BODY: {position:absolute;width:23px;height:23px;margin:0;opacity:0;cursor:pointer}
+[style.css] (base)
+  SEL: .ingredient-name
+  BODY: {flex:1;min-width:0}
+[style.css] (base)
+  SEL: .ingredient-name>b
+  BODY: {font-size:14px;font-weight:500;color:#605951}
+[style.css] (base)
+  SEL: .ingredient-name>span
+  BODY: {display:block;font-size:10px;color:#a29a91;line-height:1.8;margin-top:7px}
+[style.css] (base)
+  SEL: .ingredient-amount
+  BODY: {min-width:145px;display:flex;flex-direction:column;gap:7px}
+[style.css] (base)
+  SEL: .ingredient-amount>b
+  BODY: {font-size:12px;font-weight:400;color:#847a6f}
+[style.css] (base)
+  SEL: .ingredient-amount>span
+  BODY: {font-size:10px;color:#a49d94}
+[style.css] (base)
+  SEL: .ingredient-status
+  BODY: {font-size:11px;width:108px;text-align:right;flex-shrink:0}
+[style.css] (base)
+  SEL: .prepared .ingredient-name>b
+  BODY: {color:#a29a91}
+[style.css] (base)
+  SEL: .inventory-grid
+  BODY: {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+[style.css] (base)
+  SEL: .stock-card
+  BODY: {background:var(--white);border:1px solid var(--line);border-radius:10px;padding:19px}
+[style.css] (base)
+  SEL: .stock-card h3
+  BODY: {font-size:15px;color:#6d655c;margin-top:18px;font-weight:500}
+[style.css] (base)
+  SEL: .stock-card>p
+  BODY: {font-size:13px;color:#958c82;margin-top:9px}
+[style.css] (base)
+  SEL: .settings-grid
+  BODY: {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+[style.css] (base)
+  SEL: .settings-card
+  BODY: {padding:26px}
+[style.css] (base)
+  SEL: .settings-card h2
+  BODY: {display:flex;align-items:center;gap:11px;font-size:19px;color:#756d63;margin-bottom:12px}
+[style.css] (base)
+  SEL: .recipe-modal
+  BODY: {display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:start}
+[style.css] (base)
+  SEL: .recipe-modal h3,.steps-heading
+  BODY: {font-size:14px;font-weight:500;color:#7b7267}
+[style.css] (base)
+  SEL: .recipe-modal~.full
+  BODY: {margin-top:20px}
+[style.css] (base)
+  SEL: .invite-type
+  BODY: {display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:25px}
+[style.css] (base)
+  SEL: .invite-type>button
+  BODY: {padding:20px 10px;border:1px solid #e3ded9;border-radius:10px;display:flex;flex-direction:column;align-items:center;gap:10px;color:#9e968c}
+[style.css] (base)
+  SEL: .invite-type>button.selected
+  BODY: {background:#f1eae2;border-color:#aea79e;color:#7a7167}
+[style.css] (base)
+  SEL: .invite-type b
+  BODY: {font-size:13px;font-weight:500}
+[style.css] (base)
+  SEL: .invite-type small
+  BODY: {font-size:10px;line-height:1.7}
+[style.css] (base)
+  SEL: .form-grid
+  BODY: {display:grid;grid-template-columns:1fr 1fr;gap:16px}
+[style.css] @media(min-width:1450px)
+  SEL: .menu-layout
+  BODY: {grid-template-columns:minmax(0,1fr) 285px;gap:32px}
+[style.css] @media(min-width:1450px)
+  SEL: .dish-grid
+  BODY: {grid-template-columns:repeat(3,minmax(0,1fr))}
+[style.css] @media(max-width:1190px)
+  SEL: .menu-layout
+  BODY: {gap:20px;grid-template-columns:minmax(0,1fr) 240px}
+[style.css] @media(max-width:1190px)
+  SEL: .chef-layout
+  BODY: {grid-template-columns:minmax(0,1fr) 240px;gap:20px}
+[style.css] @media(max-width:1190px)
+  SEL: .inventory-grid
+  BODY: {grid-template-columns:repeat(3,minmax(0,1fr))}
+[style.css] @media(max-width:1190px)
+  SEL: .ingredient-amount
+  BODY: {min-width:120px}
+[style.css] @media(max-width:1190px)
+  SEL: .ingredient-status
+  BODY: {width:90px}
+[style.css] @media(max-width:970px)
+  SEL: .menu-layout
+  BODY: {grid-template-columns:1fr}
+[style.css] @media(max-width:970px)
+  SEL: .no-cart .dish-grid
+  BODY: {grid-template-columns:repeat(2,minmax(0,1fr))}
+[style.css] @media(max-width:970px)
+  SEL: .chef-layout
+  BODY: {grid-template-columns:1fr}
+[style.css] @media(max-width:970px)
+  SEL: .prep-icon
+  BODY: {width:45px;height:45px;margin-bottom:14px}
+[style.css] @media(max-width:970px)
+  SEL: .settings-grid
+  BODY: {grid-template-columns:1fr}
+[style.css] @media(max-width:970px)
+  SEL: .ingredient-status
+  BODY: {width:82px;font-size:10px}
+[style.css] @media(max-width:970px)
+  SEL: .ingredient-amount
+  BODY: {min-width:112px}
+[style.css] @media(max-width:970px)
+  SEL: .demo-bar
+  BODY: {font-size:10px;padding:7px 15px}
+[style.css] @media(max-width:680px)
+  SEL: .demo-bar
+  BODY: {padding:8px 12px;align-items:flex-start;gap:7px;flex-wrap:wrap}
+[style.css] @media(max-width:680px)
+  SEL: .dish-grid,.no-cart .dish-grid
+  BODY: {gap:12px}
+[style.css] @media(max-width:680px)
+  SEL: .menu-layout
+  BODY: {gap:22px}
+[style.css] @media(max-width:680px)
+  SEL: .chef-layout
+  BODY: {gap:20px}
+[style.css] @media(max-width:680px)
+  SEL: .shopping-row
+  BODY: {display:grid;grid-template-columns:25px 1fr auto;gap:10px;padding:18px 0}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-name
+  BODY: {grid-column:2}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-name>b
+  BODY: {font-size:14px}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-name>span
+  BODY: {font-size:10px}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-amount
+  BODY: {grid-column:2;min-width:0;gap:4px}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-status
+  BODY: {grid-column:3;grid-row:1 / span 2;width:auto;max-width:85px;font-size:11px}
+[style.css] @media(max-width:680px)
+  SEL: .check-wrap
+  BODY: {grid-row:1 / span 2;padding:0}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-amount>b
+  BODY: {font-size:11px}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-amount>span
+  BODY: {font-size:10px}
+[style.css] @media(max-width:680px)
+  SEL: .inventory-grid
+  BODY: {grid-template-columns:1fr 1fr;gap:13px}
+[style.css] @media(max-width:680px)
+  SEL: .stock-card
+  BODY: {padding:16px}
+[style.css] @media(max-width:680px)
+  SEL: .stock-card h3
+  BODY: {font-size:15px}
+[style.css] @media(max-width:680px)
+  SEL: .stock-card>p
+  BODY: {font-size:12px}
+[style.css] @media(max-width:680px)
+  SEL: .settings-card
+  BODY: {padding:23px}
+[style.css] @media(max-width:680px)
+  SEL: .settings-card h2
+  BODY: {font-size:19px}
+[style.css] @media(max-width:680px)
+  SEL: .settings-grid
+  BODY: {gap:20px}
+[style.css] @media(max-width:680px)
+  SEL: .recipe-modal
+  BODY: {grid-template-columns:1fr}
+[style.css] @media(max-width:680px)
+  SEL: .form-grid
+  BODY: {gap:11px}
+[style.css] (base)
+  SEL: .ingredient-name>span,.ingredient-amount>span
+  BODY: {font-size:11px;color:#8e857a}
+[style.css] (base)
+  SEL: .ingredient-status
+  BODY: {font-size:12px}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-name>span
+  BODY: {font-size:11px}
+[style.css] @media(max-width:680px)
+  SEL: .ingredient-status
+  BODY: {font-size:11px}
+[style.css] @media(max-width:680px)
+  SEL: .form-grid .form-field
+  BODY: {font-size:12px}
+[themes.css] (base)
+  SEL: .demo-bar,.sidebar,.category-rail
+  BODY: {background:var(--tint); color:var(--muted); border-color:var(--line)}
+[themes.css] (base)
+  SEL: .dish-card,.cart,.surface,.stock-card,.shopping-list,.search-field
+  BODY: {background:var(--white); border-color:var(--line)}
+[themes.css] (base)
+  SEL: .dish-body>p,.dish-bottom>span,.muted,.page-heading p,.cart-date,.cart-note,.recipe-description,.steps p,.small-note,.ingredient-name>span,.ingredient-amount>span
+  BODY: {color:var(--muted)}
+[themes.css] (base)
+  SEL: .prep-icon,.summary-icon,.calendar-trigger-icon,.review-heart
+  BODY: {background:var(--tint); color:var(--orange)}
+[themes.css] (base)
+  SEL: .prep-stats b,.ingredient-name>b,.ingredient-amount>b,.setting-row b,.recipe-modal h3,.steps-heading
+  BODY: {color:var(--ink)}
+[themes.css] (base)
+  SEL: .invitation-card,.invite-type>button.selected
+  BODY: {background:var(--soft-orange); border-color:var(--companion); color:var(--orange)}
+[themes.css] (base)
+  SEL: .calendar-month h3,.calendar-meals h3,.calendar-grid button
+  BODY: {color:var(--ink)}
+[themes.css] (base)
+  SEL: .calendar-week,.calendar-legend,.calendar-meals small
+  BODY: {color:var(--muted)}
+[themes.css] (base)
+  SEL: .calendar-grid button.today
+  BODY: {border-color:var(--companion)}
+[themes.css] (base)
+  SEL: .calendar-grid button.selected,.calendar-grid button.selected:hover
+  BODY: {background:var(--orange); color:white; border-color:var(--orange)}
+[themes.css] (base)
+  SEL: .calendar-grid button:disabled
+  BODY: {background:var(--paper); color:var(--muted); opacity:.6}
+[themes.css] (base)
+  SEL: .category-rail button,.category-rail button small
+  BODY: {color:var(--muted)}
+[themes.css] (base)
+  SEL: .category-rail button.active
+  BODY: {background:var(--white); color:var(--orange)}
+[themes.css] (base)
+  SEL: .stock-card>p,.stock-bottom>span,.setting-row small,.feedback-entry p,.feedback-entry small
+  BODY: {color:var(--muted)}

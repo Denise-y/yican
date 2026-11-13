@@ -1,0 +1,35 @@
+/* 小程序表单控件替代样式：YiSelect / YiPickerField / YiCheck */
+
+.yican-select{display:block;width:100%}
+.yican-select-inner{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:43px;box-sizing:border-box;border:1px solid #e2ddd7;border-radius:7px;background:#fbf9f7;padding:11px 12px;color:#70685f;font-size:13px}
+.yican-select-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.4}
+.yican-select-text.placeholder{color:#afa8a1}
+.yican-select-arrow{color:#9a9187;flex-shrink:0}
+.yican-select-disabled .yican-select-inner{opacity:.55}
+
+.yican-picker-input{display:block;width:100%}
+.yican-picker-input-inner{display:flex;align-items:center;width:100%;min-height:43px;box-sizing:border-box;border:1px solid #e2ddd7;border-radius:7px;background:#fbf9f7;padding:11px 12px;color:#70685f;font-size:13px;line-height:1.4}
+.yican-picker-input-inner.empty{color:#afa8a1}
+.yican-picker-disabled .yican-picker-input-inner{opacity:.55}
+
+.modal .yican-select-inner,.modal .yican-picker-input-inner{font-size:16px}
+
+.yican-check{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.yican-check-box{width:22px;height:22px;box-sizing:border-box;border:1px solid #d0c8be;border-radius:6px;display:flex;align-items:center;justify-content:center;color:transparent;background:transparent}
+.yican-check-box.on{background:var(--orange,#8c8277);border-color:var(--orange,#8c8277);color:#fff}
+.yican-check-box.disabled{opacity:.5}
+
+.stock-text-form textarea{resize:vertical;min-height:136px;line-height:1.85;font-size:16px}
+.stock-text-hint .text-button{min-height:44px;background:none;border:0;color:var(--orange);padding:0 8px;font:inherit;font-weight:600}
+.stock-text-row input,.stock-text-row .el-select{min-width:0;min-height:44px;width:100%;font-size:16px;border:1px solid var(--line,#e2ddd7);border-radius:9px;background:var(--paper,#fbf9f7);color:var(--ink,#70685f);padding:8px}
+.stock-text-row-head input{flex:1;width:0;border-color:transparent;background:transparent;font-weight:600}
+.stock-text-row-fields>label{flex:1 1 0;min-width:0}
+.stock-text-row-fields label{min-width:0;font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.stock-text-row .yican-select-inner{min-width:0;min-height:44px;width:100%;font-size:16px;border:1px solid var(--line,#e2ddd7);border-radius:9px;background:var(--paper,#fbf9f7);color:var(--ink,#70685f);padding:8px}
+
+.recipe-editor .form-field input,.recipe-editor .form-field .el-select,.recipe-editor .form-field textarea{width:100%;min-width:0;box-sizing:border-box}
+@media(max-width:600px){.ingredient-amounts .form-field input,.ingredient-amounts .form-field .el-select{padding-left:9px;padding-right:9px}}
+.kitchen-name-form .form-field input{min-height:48px}
+
+.review-meal-label .yican-select-inner{width:100%;background:#fffdfa;font-size:14px;min-height:48px;text-overflow:ellipsis}
+.review-dish-picker .yican-select-inner{width:100%;min-width:0;min-height:50px;border:1px solid #e7d6c5;border-radius:12px;background:#fffdfa;font-size:13px;padding:10px;color:#614b3b;text-overflow:ellipsis}

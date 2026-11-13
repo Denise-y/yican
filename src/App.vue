@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { onLaunch, onShow, onHide } from "@dcloudio/uni-app";
+import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
+import { appVisibility } from './shared'
+
 onLaunch(() => {
-  console.log("App Launch");
-});
+  // 小程序启动即视为可见，触发一次状态刷新
+  appVisibility.value = true
+})
 onShow(() => {
-  console.log("App Show");
-});
+  appVisibility.value = true
+})
 onHide(() => {
-  console.log("App Hide");
-});
+  appVisibility.value = false
+})
 </script>
+
 <style></style>

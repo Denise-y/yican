@@ -1,0 +1,335 @@
+/* Final polish layer — loaded last so it refines earlier sheets.
+   Goals: consistent radii, press feedback, elevation, focus rings, empty states. */
+
+/* ---- Shadow tokens ---- */
+page{
+  --shadow-1:0 1px 2px rgba(48,45,42,.05),0 2px 8px rgba(48,45,42,.04);
+  --shadow-2:0 2px 6px rgba(48,45,42,.06),0 8px 24px rgba(48,45,42,.06);
+  --shadow-3:0 4px 12px rgba(48,45,42,.08),0 16px 40px rgba(48,45,42,.10);
+  --radius-sm:8px;
+  --radius-md:11px;
+  --radius-lg:16px;
+  --radius-xl:22px;
+}
+
+/* ---- Buttons ---- */
+.btn{
+  border-radius:var(--radius-md);
+  letter-spacing:.02em;
+  transition:background .18s ease,color .18s ease,transform .12s ease,box-shadow .18s ease,border-color .18s ease;
+  will-change:transform;
+}
+.btn:active:not(:disabled){transform:translateY(1px) scale(.985)}
+.btn:disabled{transform:none;box-shadow:none;opacity:.5}
+.btn.primary{
+  box-shadow:0 2px 8px rgba(198,83,22,.22),inset 0 1px 0 rgba(255,255,255,.18);
+}
+.btn.primary:hover:not(:disabled){box-shadow:0 4px 14px rgba(198,83,22,.28),inset 0 1px 0 rgba(255,255,255,.18)}
+.btn.primary:active:not(:disabled){box-shadow:0 1px 3px rgba(198,83,22,.2),inset 0 1px 0 rgba(255,255,255,.12)}
+.btn.secondary{
+  box-shadow:0 1px 2px rgba(48,45,42,.04);
+}
+.btn.secondary:active:not(:disabled){background:var(--soft-orange);border-color:var(--companion,#e9bc94)}
+.btn.small,.btn-small{border-radius:10px}
+.btn.full{width:100%}
+.text-button{
+  border-radius:6px;
+  transition:color .15s ease,background .15s ease;
+  min-height:36px;
+  padding:4px 6px;
+}
+.text-button:hover:not(:disabled){text-decoration:underline;text-underline-offset:3px}
+.text-button:active:not(:disabled){opacity:.75}
+
+/* ---- Icon buttons ---- */
+.icon-btn{
+  border-radius:10px;
+  transition:background .15s ease,color .15s ease,transform .12s ease;
+}
+.icon-btn:hover:not(:disabled){background:var(--soft-orange);color:var(--orange)}
+.icon-btn:active:not(:disabled){transform:scale(.92);background:var(--soft-orange)}
+.icon-btn:disabled{transform:none}
+
+/* ---- Tabs & chips ---- */
+.pill-tabs{gap:7px}
+.pill-tabs button{
+  border-radius:999px;
+  border:1px solid transparent;
+  padding:9px 16px;
+  min-height:38px;
+  transition:background .15s ease,color .15s ease,border-color .15s ease,transform .12s ease;
+}
+.pill-tabs button:active:not(:disabled){transform:scale(.97)}
+.pill-tabs button.active{
+  background:var(--soft-orange);
+  color:var(--orange);
+  border-color:color-mix(in srgb,var(--orange) 22%,transparent);
+  font-weight:600;
+  box-shadow:0 1px 3px rgba(198,83,22,.12);
+}
+.segmented button{
+  border-radius:9px;
+  border:1px solid transparent;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.segmented button.selected{
+  background:var(--soft-orange);
+  color:var(--orange);
+  border-color:color-mix(in srgb,var(--orange) 20%,transparent);
+  font-weight:600;
+}
+.auth-tabs{border-radius:13px}
+.auth-tabs button{border-radius:10px;transition:background .18s ease,color .18s ease,box-shadow .18s ease}
+.auth-tabs button.active{box-shadow:0 2px 8px rgba(48,45,42,.08),0 1px 2px rgba(48,45,42,.04)}
+
+/* ---- Form fields & controls ---- */
+.form-field input,
+.form-field textarea,
+.form-field .el-select{
+  border-radius:10px;
+  transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
+}
+.form-field input:hover,
+.form-field textarea:hover,
+.form-field .el-select:hover{border-color:color-mix(in srgb,var(--orange) 28%,var(--line))}
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field .el-select:focus{
+  outline:none;
+  border-color:color-mix(in srgb,var(--orange) 55%,var(--line));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 16%,transparent);
+}
+.yican-select-inner,
+.yican-picker-input-inner{
+  border-radius:10px;
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.yican-select-inner:hover,
+.yican-picker-input-inner:hover{border-color:color-mix(in srgb,var(--orange) 28%,var(--line))}
+.yican-select-inner:focus-within,
+.yican-picker-input-inner:focus-within{
+  border-color:color-mix(in srgb,var(--orange) 55%,var(--line));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 16%,transparent);
+}
+.auth-fields input{border-radius:11px}
+.auth-fields input:focus{
+  outline:none;
+  border-color:color-mix(in srgb,var(--orange) 55%,var(--line));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 16%,transparent);
+}
+.search-field{
+  border-radius:12px;
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.search-field:focus-within{
+  border-color:color-mix(in srgb,var(--orange) 40%,var(--line));
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 12%,transparent);
+}
+
+/* ---- Stepper ---- */
+.stepper{border-radius:10px;overflow:hidden;transition:border-color .15s ease,box-shadow .15s ease}
+.stepper:focus-within{border-color:color-mix(in srgb,var(--orange) 45%,var(--line));box-shadow:0 0 0 3px color-mix(in srgb,var(--orange) 12%,transparent)}
+.stepper button{transition:background .12s ease,color .12s ease}
+.stepper button:active:not(:disabled){background:var(--soft-orange);color:var(--orange)}
+.stepper .el-b{font-variant-numeric:tabular-nums}
+
+/* ---- Add / check controls ---- */
+.add-button{
+  border-radius:50%;
+  transition:background .15s ease,color .15s ease,transform .12s ease,box-shadow .15s ease;
+  box-shadow:0 1px 2px rgba(48,45,42,.06);
+}
+.add-button:active:not(:disabled){transform:scale(.9)}
+.add-button:hover:not(:disabled){box-shadow:0 2px 8px rgba(198,83,22,.2)}
+.yican-check-box{border-radius:7px;transition:background .15s ease,border-color .15s ease,transform .12s ease}
+.yican-check-box:active{transform:scale(.92)}
+
+/* ---- Badges ---- */
+.badge{border-radius:999px;padding:5px 10px;font-weight:500;letter-spacing:.02em}
+
+/* ---- Empty states ---- */
+.empty-mark{
+  background:linear-gradient(145deg,#fff 0%,var(--soft-orange) 100%);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-1);
+  color:var(--orange);
+  transition:transform .3s ease;
+}
+.welcome-empty .empty-mark{color:var(--orange)}
+.empty-small{
+  border-radius:var(--radius-lg);
+  gap:15px;
+}
+.empty-small .el-h3{color:var(--ink)}
+.empty-small .el-p{color:var(--muted)}
+.welcome-empty{gap:20px}
+.welcome-empty .el-h1{color:var(--ink)}
+.welcome-empty>.el-p{color:var(--muted)}
+.welcome-empty .btn{margin-top:2px}
+
+/* ---- Elevated surfaces ---- */
+.dish-card,
+.stock-card,
+.settings-card,
+.journal-meal,
+.review-note,
+.order-card,
+.surface{
+  box-shadow:var(--shadow-1);
+}
+.modal{
+  box-shadow:var(--shadow-3);
+  border-radius:var(--radius-xl);
+}
+.modal.sheet{border-radius:22px 22px 0 0}
+.invite-landing-card{box-shadow:var(--shadow-2)}
+.kitchen-choice,
+.invitation-card,
+.review-invitation,
+.prep-card,
+.shopping-summary{
+  transition:border-color .15s ease,box-shadow .15s ease,transform .12s ease;
+}
+.kitchen-choice:active,
+.invite-role-list button:active:not(:disabled){transform:scale(.99)}
+
+/* ---- Navigation ---- */
+.main-nav>button{
+  border-radius:11px;
+  transition:background .15s ease,color .15s ease,transform .12s ease;
+}
+.main-nav>button:active{transform:scale(.98)}
+.main-nav>button.active{font-weight:600;box-shadow:0 1px 3px rgba(198,83,22,.1)}
+.mobile-nav>button{
+  border-radius:12px;
+  transition:color .15s ease,transform .12s ease;
+}
+.mobile-nav>button:active{transform:scale(.95)}
+.mobile-nav>button.active{font-weight:600}
+.kitchen-switch{border-radius:13px;transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}
+.kitchen-switch:active{transform:scale(.99);box-shadow:var(--shadow-1)}
+.category-rail button{border-radius:10px;transition:background .15s ease,color .15s ease}
+.category-rail button:active{transform:scale(.98)}
+
+/* ---- Cards / rows ---- */
+.setting-row{
+  transition:background .15s ease;
+}
+.setting-row.clickable:active{background:var(--soft-orange)}
+.member-list,
+.chef-dish,
+.panel-head{
+  transition:border-color .15s ease;
+}
+.stock-card{border-radius:15px;transition:box-shadow .18s ease,transform .15s ease,border-color .15s ease}
+.stock-card:active{transform:scale(.99)}
+.stock-card.add-stock{border-style:dashed;border-color:color-mix(in srgb,var(--orange) 30%,var(--line));color:var(--orange)}
+.stock-card.add-stock:active{background:var(--soft-orange)}
+.dish-card{transition:box-shadow .18s ease,transform .15s ease}
+.dish-card:active{transform:scale(.99)}
+.meal-selector{border-radius:16px}
+.date-chip{border-radius:11px;transition:background .15s ease,color .15s ease,border-color .15s ease}
+.date-chip:active{transform:scale(.96)}
+.open-meal{border-radius:11px;transition:background .15s ease}
+.open-meal:active{background:var(--soft-orange)}
+
+/* ---- Role / invite pickers ---- */
+.auth-roles button{
+  border-radius:14px;
+  transition:background .15s ease,border-color .15s ease,color .15s ease,transform .12s ease,box-shadow .15s ease;
+}
+.auth-roles button:active:not(:disabled){transform:scale(.98)}
+.auth-roles button.selected{box-shadow:0 2px 10px rgba(198,83,22,.14);border-color:var(--orange)}
+.invite-type>button,
+.invite-role-list button{
+  transition:background .15s ease,border-color .15s ease,color .15s ease,transform .12s ease;
+}
+.invite-type>button:active:not(:disabled),
+.invite-role-list button:active:not(:disabled){transform:scale(.98)}
+.invite-type>button.selected,
+.invite-role-list button.selected{box-shadow:0 2px 10px rgba(198,83,22,.12)}
+
+/* ---- Auth polish ---- */
+.auth-brand-symbol{box-shadow:0 4px 14px rgba(198,83,22,.25)}
+.auth-passwordless{border-radius:11px;transition:background .15s ease,border-color .15s ease,color .15s ease}
+.auth-passwordless.selected{box-shadow:0 1px 4px rgba(198,83,22,.12)}
+.auth-password-field>button{border-radius:8px;transition:background .15s ease,color .15s ease}
+.auth-password-field>button:active{background:var(--soft-orange);color:var(--orange)}
+.auth-submit{border-radius:12px}
+.auth-tabs{box-shadow:inset 0 1px 2px rgba(48,45,42,.04)}
+
+/* ---- Avatar ---- */
+.avatar{
+  box-shadow:0 0 0 2px var(--white),0 1px 3px rgba(48,45,42,.15);
+  font-weight:600;
+}
+
+/* ---- Brand ---- */
+.brand-symbol{
+  border-radius:15px;
+  box-shadow:0 3px 10px rgba(198,83,22,.28);
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.brand:active .brand-symbol{transform:scale(.95)}
+.brand{gap:11px}
+.brand .el-strong{letter-spacing:.5px}
+
+/* ---- Focus visibility (consistent) ---- */
+button:focus-visible,
+.el-a:focus-visible,
+input:focus-visible,
+textarea:focus-visible{
+  outline:2px solid color-mix(in srgb,var(--orange) 70%,white);
+  outline-offset:2px;
+}
+
+/* ---- Toast / sync ---- */
+.toast{border-radius:13px;box-shadow:var(--shadow-2)}
+.sync-status{border-radius:12px}
+
+/* ---- Review entry pill ---- */
+.review-entry{border-radius:12px;transition:background .15s ease,transform .12s ease}
+.review-entry:active{transform:scale(.95)}
+.review-entry:hover{background:color-mix(in srgb,var(--soft-orange) 70%,white)}
+
+/* ---- Icon host box-sizing (registered .vue wrappers; bare `link` omitted — WeChat rejects that tag selector) ---- */
+alert-circle,arrow-down,arrow-left,arrow-right,arrow-right-left,arrow-up,arrow-up-right,
+book-heart,book-open,calendar-days,check,check-check,check-circle2,chef-hat,
+chevron-down,chevron-left,chevron-right,circle-help,clock3,cooking-pot,copy,
+eye,eye-off,github,heart,house,key-round,leaf,list-checks,loader-circle,
+lock-keyhole,log-out,message-circle,minus,pencil,plus,refresh-cw,rotate-ccw,
+search,settings2,shield-check,shopping-basket,sliders-horizontal,sparkles,
+sprout,text-cursor-input,trash2,user-round,users,utensils,x{
+  box-sizing:border-box;
+}
+
+/* ---- Mobile refinements ---- */
+@media(max-width:680px){
+  .btn{border-radius:12px}
+  .btn:active:not(:disabled){transform:translateY(1px) scale(.99)}
+  .pill-tabs button{padding:9px 13px;min-height:40px;font-size:11px}
+  .icon-btn{border-radius:11px}
+  .empty-mark{width:84px;height:84px;border-radius:24px}
+  .empty-small{padding:36px 16px;border-radius:16px}
+  .welcome-empty{padding:64px 14px;gap:18px}
+  .auth-tabs button{min-height:44px}
+  .auth-roles button{border-radius:14px}
+  .mobile-nav>button.active .yican-icon{transform:translateY(-1px)}
+  .stock-card{border-radius:14px}
+  .modal,.modal.wide{border-radius:22px 22px 0 0}
+}
+
+/* ---- Reduced motion ---- */
+@media(prefers-reduced-motion:reduce){
+  .btn,.icon-btn,.pill-tabs button,.segmented button,
+  .stock-card,.dish-card,.add-button,.yican-check-box,
+  .main-nav>button,.mobile-nav>button,.date-chip,.stepper button{
+    transition:none!important;
+  }
+  .btn:active:not(:disabled),
+  .icon-btn:active:not(:disabled),
+  .stock-card:active,
+  .dish-card:active{
+    transform:none!important;
+  }
+}

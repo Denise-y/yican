@@ -1,41 +1,25 @@
+<script setup lang="ts">
+import { onShareAppMessage } from '@dcloudio/uni-app'
+import AccountRoot from '../../AccountRoot.vue'
+import { initTheme, themeVars } from '../../themes'
+import { shareInvite } from '../../shared'
+
+initTheme()
+
+onShareAppMessage(() => ({
+  title: '来我家，好好吃一餐。',
+  path: shareInvite.value ? `pages/index/index?invite=${shareInvite.value}` : 'pages/index/index',
+}))
+</script>
+
 <template>
-  <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
+  <view class="page-scope theme-scope" :style="themeVars">
+    <AccountRoot />
   </view>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-const title = ref('Hello')
-</script>
-
 <style>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
+.page-scope {
+  min-height: 100vh;
 }
 </style>
